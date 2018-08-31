@@ -7,7 +7,11 @@ Set up and run [docker-compose](docker-compose.yml)
 ### Configure Database
 
 - Set password in docker-compose file
-- run [this](database.sh) (edit password)
+- set database password in [this](database.sh)
+- run
+
+    sudo docker-compose up -d db
+    sudo ./database.sh
 
 ### Get pep.py config file
 
