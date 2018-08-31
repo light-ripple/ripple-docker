@@ -1,13 +1,13 @@
 # Ripple Docker Setup Guide!
 
-Set up and run [docker-compose](https://gitlab.com/snippets/1739749)
+Set up and run [docker-compose](docker-compose.yaml)
 
     sudo docker-compose build
 
 ### Configure Database
 
 - Set password in docker-compose file
-- run [this](https://gitlab.com/snippets/1739746) (edit password)
+- run [this](database.sh) (edit password)
 
 ### Get pep.py config file
 
@@ -72,7 +72,7 @@ mkdir keys
 sudo openssl req -x509 -nodes -days 99999 -newkey rsa:2048 -keyout ./keys/ppy.sh.key.pem -out ./keys/ppy.sh.cert.pem -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=*.ppy.sh"
 ```
 
-- Put this [nginx.conf](https://gitlab.com/snippets/1749630) file into the current directory
+- Put this [nginx.conf](nginx.conf) file into the current directory
 - Replace test.test with your domain
 - You need to import the ./keys/ppy.sh.cert.pem on your local computer
 
