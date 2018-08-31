@@ -1,6 +1,6 @@
 # Ripple Docker Setup Guide!
 
-- Set up and run [docker-compose](docker-compose.yml)
+- Set up and run docker-compose
 - Clone this repository
 - Run inside directory
 
