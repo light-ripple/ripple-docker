@@ -62,7 +62,7 @@ Update rippleapi.conf
 ### Old Frontend
 
 ```
-git clone -b Dockerfile --recurse-submodules https://gitlab.com/Shaddy/old-frontend/
+git clone -b Dockerfile --recurse-submodules https://gitlab.com/ripple-docker/old-frontend/
 sudo docker run --rm -v $PWD/old-frontend:/app/ composer install
 cp old-frontend/inc/config.sample.php oldfrontend.config.php
 ```
