@@ -600,3 +600,5 @@ INSERT INTO \`users_stats\`(\`id\`, \`username\`, \`username_aka\`, \`user_color
 
 EOF
 '
+
+echo "Success!"
