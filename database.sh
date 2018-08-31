@@ -13,7 +13,7 @@ CREATE TABLE \`2fa\` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE \`2fa_telegram\` (
-  \`userid\` int(11) NOT NULL
+  \`userid\` int(11) NOT NULL,
   \`id\` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -352,8 +352,8 @@ CREATE TABLE \`users\` (
   \`password_version\` tinyint(4) NOT NULL DEFAULT \'1\',
   \`privileges\` int(11) NOT NULL,
   \`donor_expire\` int(11) NOT NULL DEFAULT \'0\',
-  \`flags\` int(11) NOT NULL DEFAULT \'0\'
-  \`achievements_version\` int(11) NOT NULL DEFAULT \'0\'
+  \`flags\` int(11) NOT NULL DEFAULT \'0\',
+  \`achievements_version\` int(11) NOT NULL DEFAULT \'0\',
   \`notes\` TEXT NOT NULL DEFAULT \'\'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -425,7 +425,6 @@ CREATE TABLE \`user_badges\` (
   \`badge\` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE \`users_stats\` DROP PRIMARY KEY;
 CREATE UNIQUE INDEX \`user_badge\` ON \`user_badges\` (user, badge);
 
 CREATE TABLE \`irc_tokens\` (
