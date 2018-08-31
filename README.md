@@ -1,8 +1,10 @@
 # Ripple Docker Setup Guide!
 
-Set up and run [docker-compose](docker-compose.yml)
+- Set up and run [docker-compose](docker-compose.yml)
+- Clone this repository
+- Run inside directory
 
-    sudo docker-compose build
+        sudo docker-compose build
 
 ### Configure Database
 
@@ -113,4 +115,3 @@ Don't leave these open in production. lol
 - Python images to alpine?
 - Server Switcher
 - lets achievement database import
-- Move project to its own community or something
