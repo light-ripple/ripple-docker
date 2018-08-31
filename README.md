@@ -78,7 +78,7 @@ mkdir keys
 sudo openssl req -x509 -nodes -days 99999 -newkey rsa:2048 -keyout ./keys/ppy.sh.key.pem -out ./keys/ppy.sh.cert.pem -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=*.ppy.sh"
 ```
 
-- Put this [nginx.conf](nginx.conf) file into the current directory
+- Edit [nginx.conf](nginx.conf)
 - Replace test.test with your domain
 - You need to import the ./keys/ppy.sh.cert.pem on your local computer
 
