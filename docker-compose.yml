@@ -82,7 +82,6 @@ services:
       - hanayo
       - lets
       - peppy
-      - portainer
       - old_frontend
       - avatar_server
     ports:
