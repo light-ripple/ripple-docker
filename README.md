@@ -57,7 +57,7 @@ Update rippleapi.conf
 - DSN to root:pass@tcp(db:3306)/ripple
 - hanayo api secret
 - osu api key
-- redis host
+- RedisAddr=redis:6379
 
 ### Old Frontend
 
