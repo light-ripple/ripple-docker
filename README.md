@@ -19,7 +19,7 @@ Update peppy.ini
 
 #### Get Let's config file
 
-    sudo docker run -v $PWD:/out let.s /bin/bash -c "python3.6 lets.py && cp config.ini /out/lets.ini
+    sudo docker run -v $PWD:/out let.s /bin/bash -c "python3.6 lets.py && cp config.ini /out/lets.ini"
 
 Update lets.ini
 - update database pass
