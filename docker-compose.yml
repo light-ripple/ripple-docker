@@ -4,7 +4,7 @@ services:
 #    container_name: pep.py
     image: pep.py
     build:
-      context: 'https://gitlab.com/Shaddy/pep.py.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/pep.py.git#Dockerfile'
     volumes:
       - ./peppy.ini:/pep.py/config.ini
     depends_on:
@@ -16,7 +16,7 @@ services:
   lets:
     image: let.s
     build:
-      context: 'https://gitlab.com/Shaddy/lets.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/lets.git#Dockerfile'
     volumes:
       - ./lets.ini:/let.s/config.ini
     depends_on:
@@ -27,7 +27,7 @@ services:
   hanayo:
     image: hanayo
     build:
-      context: 'https://gitlab.com/Shaddy/hanayo.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/hanayo.git#Dockerfile'
     volumes:
       - ./hanayo.conf:/hanayo/hanayo.conf
       - ./avatars/:/avatars
@@ -40,7 +40,7 @@ services:
   rippleapi:
     image: rippleapi
     build:
-      context: 'https://gitlab.com/Shaddy/ripple-api.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/ripple-api.git#Dockerfile'
     volumes:
       - ./rippleapi.conf:/rippleapi/api.conf
     depends_on:
@@ -51,7 +51,7 @@ services:
   avatar_server:
     image: avatar_server
     build:
-      context: 'https://gitlab.com/Shaddy/avatar-server-go.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/avatar-server-go.git#Dockerfile'
     volumes:
       - ./avatars/:/avatar_server/avatars
     restart: on-failure
