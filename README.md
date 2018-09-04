@@ -9,13 +9,6 @@
 ### Configure Database
 
 - Set password in docker-compose file
-- set database password in [this](database.sh)
-- run
-
-```
-sudo docker-compose up -d db
-sudo ./database.sh
-```
 
 ### Get pep.py config file
 
