@@ -4,7 +4,7 @@ services:
 #    container_name: pep.py
     image: pep.py
     build:
-      context: 'https://gitlab.com/ripple-docker/pep.py.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/pep.py.git'
     volumes:
       - ./peppy.ini:/pep.py/config.ini
     depends_on:
@@ -16,7 +16,7 @@ services:
   lets:
     image: let.s
     build:
-      context: 'https://gitlab.com/ripple-docker/lets.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/lets.git'
     volumes:
       - ./lets.ini:/let.s/config.ini
     depends_on:
