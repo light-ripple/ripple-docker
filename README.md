@@ -103,8 +103,6 @@ Don't leave these open in production. lol
 
 ## Todo:
 - Cheesegull
-- Move Hanayo to Debian?
-- Make golang image lite?
-- Python images to alpine?
 - Server Switcher
 - lets achievement database import
+- Update database
