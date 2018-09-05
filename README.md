@@ -1,6 +1,12 @@
 # Ripple Docker Setup Guide!
 
-- Set up and run docker-compose
+Big thanks to Emily/Sunpy for helping with lost of things!
+
+Only edit options besides the ones mentioned here if you know what you're doing. The steps described should be sufficient to get a functioning instance of ripple up and running
+
+### Docker
+
+- Set up docker-compose
 - Clone this repository
 - Run inside directory
 
@@ -15,17 +21,17 @@
     sudo docker run -v $PWD:/out pep.py /bin/bash -c "python3.6 pep.py && cp config.ini /out/peppy.ini"
 
 Update peppy.ini
-- update database pass 
-- cikey
+- update chosen database pass 
+- choose cikey
 
 #### Get Let's config file
 
     sudo docker run -v $PWD:/out let.s /bin/bash -c "python3.6 lets.py && cp config.ini /out/lets.ini"
 
 Update lets.ini
-- update database pass
-- cikey(server/apikey)
-- osu api key
+- update chosen database pass
+- update chosen cikey(server/apikey)
+- update osu api key
 
 #### Get hanayo config file
 
