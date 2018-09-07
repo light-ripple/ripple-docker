@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `badges` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
-(1, 'Beta tester 1.5', 'fa-gift'),
-(2, 'None', '');
+(DEFAULT, 'Beta tester 1.5', 'fa-gift'),
+(DEFAULT, 'None', '');
 
 
 CREATE TABLE IF NOT EXISTS `bancho_channels` (
@@ -101,14 +101,14 @@ CREATE TABLE IF NOT EXISTS `bancho_settings` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 INSERT INTO `bancho_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
-(1, 'bancho_maintenance', 0, ''),
-(2, 'free_direct', 1, ''),
-(3, 'menu_icon', 0, 'https://i.imgur.com/L61sxgX.png|http://emily.steffen.sexy'),
-(4, 'login_messages', 0, ''),
-(5, 'restricted_joke', 0, ''),
-(6, 'login_notification', 0, 'Welcome to pep.py'),
-(7, 'osu_versions', 0, ''),
-(8, 'osu_md5s', 0, '');
+(DEFAULT, 'bancho_maintenance', 0, ''),
+(DEFAULT, 'free_direct', 1, ''),
+(DEFAULT, 'menu_icon', 0, 'https://i.imgur.com/L61sxgX.png|http://emily.steffen.sexy'),
+(DEFAULT, 'login_messages', 0, ''),
+(DEFAULT, 'restricted_joke', 0, ''),
+(DEFAULT, 'login_notification', 0, 'Welcome to pep.py'),
+(DEFAULT, 'osu_versions', 0, ''),
+(DEFAULT, 'osu_md5s', 0, '');
 
 
 CREATE TABLE IF NOT EXISTS `bancho_tokens` (
@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `beta_keys` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 INSERT INTO `beta_keys` (`id`, `key_md5`, `description`, `allowed`, `public`) VALUES
-(1, '110fe4a3830966be01d0b513fcdb4f66', 'betakey', 1, 1);
+(DEFAULT, '110fe4a3830966be01d0b513fcdb4f66', 'betakey', 1, 1);
 
 CREATE TABLE IF NOT EXISTS `cakes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -314,16 +314,16 @@ CREATE TABLE IF NOT EXISTS `privileges_groups` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
-(1, 'Banned', 0, ''),
-(2, 'BAT', 267, ''),
-(3, 'Chat Moderators', 2883911, ''),
-(4, 'Community Manager ', 978427, ''),
-(5, 'Developer', 1043995, ''),
-(6, 'Donor', 7, ''),
-(7, 'God', 1048575, 'primary'),
-(8, 'Normal User', 3, ''),
-(9, 'Pending', 1048576, ''),
-(10, 'Restricted', 2, '');
+(DEFAULT, 'Banned', 0, ''),
+(DEFAULT, 'BAT', 267, ''),
+(DEFAULT, 'Chat Moderators', 2883911, ''),
+(DEFAULT, 'Community Manager ', 978427, ''),
+(DEFAULT, 'Developer', 1043995, ''),
+(DEFAULT, 'Donor', 7, ''),
+(DEFAULT, 'God', 1048575, 'primary'),
+(DEFAULT, 'Normal User', 3, ''),
+(DEFAULT, 'Pending', 1048576, ''),
+(DEFAULT, 'Restricted', 2, '');
 
 CREATE TABLE IF NOT EXISTS `profile_backgrounds` (
   `uid` int(11) NOT NULL,
