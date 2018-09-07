@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `tokens` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT=999,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `username_safe` varchar(30) NOT NULL,
   `password_md5` varchar(127) NOT NULL,
@@ -429,6 +429,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+ALTER TABLE `users` AUTO_INCREMENT=999;
+
 CREATE TABLE IF NOT EXISTS `users_achievements` (
   `user_id` int(11) NOT NULL,
   `achievement_id` int(11) NOT NULL,
@@ -443,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `users_relationships` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `users_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT=999,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `username_aka` varchar(32) NOT NULL DEFAULT '',
   `user_color` varchar(16) NOT NULL DEFAULT 'black',
@@ -493,6 +495,8 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
   `show_custom_badge` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+ALTER TABLE `users_stats` AUTO_INCREMENT=999;
 
 CREATE TABLE IF NOT EXISTS `user_badges` (
   `user` int(11) NOT NULL,
