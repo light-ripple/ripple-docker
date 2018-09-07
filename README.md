@@ -113,4 +113,5 @@ Don't leave these open in production. lol
 - lets achievement database import
 - Update database
 - Ripple cron stuff
+- letsencrypt setup
 
