@@ -19,6 +19,7 @@ services:
       context: 'https://gitlab.com/ripple-docker/lets.git'
     volumes:
       - ./lets.ini:/let.s/config.ini
+      - ./lets_data:/let.s/.data
     depends_on:
       - redis
       - db
