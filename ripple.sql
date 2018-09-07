@@ -46,9 +46,9 @@ CREATE TABLE IF NOT EXISTS `badges` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
-(DEFAULT, 'Beta tester 1.5', 'fa-gift'),
-(DEFAULT, 'None', '');
+INSERT INTO `badges` (`name`, `icon`) VALUES
+('Beta tester 1.5', 'fa-gift'),
+('None', '');
 
 
 CREATE TABLE IF NOT EXISTS `bancho_channels` (
@@ -100,15 +100,15 @@ CREATE TABLE IF NOT EXISTS `bancho_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO `bancho_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
-(DEFAULT, 'bancho_maintenance', 0, ''),
-(DEFAULT, 'free_direct', 1, ''),
-(DEFAULT, 'menu_icon', 0, 'https://i.imgur.com/L61sxgX.png|http://emily.steffen.sexy'),
-(DEFAULT, 'login_messages', 0, ''),
-(DEFAULT, 'restricted_joke', 0, ''),
-(DEFAULT, 'login_notification', 0, 'Welcome to pep.py'),
-(DEFAULT, 'osu_versions', 0, ''),
-(DEFAULT, 'osu_md5s', 0, '');
+INSERT INTO `bancho_settings` (`name`, `value_int`, `value_string`) VALUES
+('bancho_maintenance', 0, ''),
+('free_direct', 1, ''),
+('menu_icon', 0, 'https://i.imgur.com/L61sxgX.png|http://emily.steffen.sexy'),
+('login_messages', 0, ''),
+('restricted_joke', 0, ''),
+('login_notification', 0, 'Welcome to pep.py'),
+('osu_versions', 0, ''),
+('osu_md5s', 0, '');
 
 
 CREATE TABLE IF NOT EXISTS `bancho_tokens` (
@@ -170,8 +170,8 @@ CREATE TABLE IF NOT EXISTS `beta_keys` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO `beta_keys` (`id`, `key_md5`, `description`, `allowed`, `public`) VALUES
-(DEFAULT, '110fe4a3830966be01d0b513fcdb4f66', 'betakey', 1, 1);
+INSERT INTO `beta_keys` (`key_md5`, `description`, `allowed`, `public`) VALUES
+('110fe4a3830966be01d0b513fcdb4f66', 'betakey', 1, 1);
 
 CREATE TABLE IF NOT EXISTS `cakes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -313,17 +313,17 @@ CREATE TABLE IF NOT EXISTS `privileges_groups` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
-(DEFAULT, 'Banned', 0, ''),
-(DEFAULT, 'BAT', 267, ''),
-(DEFAULT, 'Chat Moderators', 2883911, ''),
-(DEFAULT, 'Community Manager ', 978427, ''),
-(DEFAULT, 'Developer', 1043995, ''),
-(DEFAULT, 'Donor', 7, ''),
-(DEFAULT, 'God', 1048575, 'primary'),
-(DEFAULT, 'Normal User', 3, ''),
-(DEFAULT, 'Pending', 1048576, ''),
-(DEFAULT, 'Restricted', 2, '');
+INSERT INTO `privileges_groups` (`name`, `privileges`, `color`) VALUES
+('Banned', 0, ''),
+('BAT', 267, ''),
+('Chat Moderators', 2883911, ''),
+('Community Manager ', 978427, ''),
+('Developer', 1043995, ''),
+('Donor', 7, ''),
+('God', 1048575, 'primary'),
+('Normal User', 3, ''),
+('Pending', 1048576, ''),
+('Restricted', 2, '');
 
 CREATE TABLE IF NOT EXISTS `profile_backgrounds` (
   `uid` int(11) NOT NULL,
@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `tokens` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT=999,
   `username` varchar(30) NOT NULL,
   `username_safe` varchar(30) NOT NULL,
   `password_md5` varchar(127) NOT NULL,
@@ -443,7 +443,7 @@ CREATE TABLE IF NOT EXISTS `users_relationships` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `users_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT=999,
   `username` varchar(30) NOT NULL,
   `username_aka` varchar(32) NOT NULL DEFAULT '',
   `user_color` varchar(16) NOT NULL DEFAULT 'black',
@@ -503,9 +503,9 @@ CREATE TABLE IF NOT EXISTS `user_badges` (
 CREATE UNIQUE INDEX `user_badge` ON `user_badges` (user, badge);
 
 
-INSERT INTO `users`(`id`, `username`, `username_safe`, `password_md5`, `salt`, `email`, `register_datetime`, `rank`, `allowed`, `latest_activity`, `silence_end`, `silence_reason`, `password_version`, `privileges`, `flags`) VALUES ('999', 'FokaBot', 'fokabot', '', '', 'fo@kab.ot', '1452544880', '4', '1', '0', '0', '', 1, 978427, 0);
+INSERT INTO `users`(`username`, `username_safe`, `password_md5`, `salt`, `email`, `register_datetime`, `rank`, `allowed`, `latest_activity`, `silence_end`, `silence_reason`, `password_version`, `privileges`, `flags`) VALUES (FokaBot', 'fokabot', '', '', 'fo@kab.ot', '1452544880', '4', '1', '0', '0', '', 1, 978427, 0);
 
-INSERT INTO `users_stats`(`id`, `username`, `username_aka`, `user_color`, `user_style`, `ranked_score_std`, `playcount_std`, `total_score_std`, `replays_watched_std`, `ranked_score_taiko`, `playcount_taiko`, `total_score_taiko`, `replays_watched_taiko`, `ranked_score_ctb`, `playcount_ctb`, `total_score_ctb`, `replays_watched_ctb`, `ranked_score_mania`, `playcount_mania`, `total_score_mania`, `replays_watched_mania`, `total_hits_std`, `total_hits_taiko`, `total_hits_ctb`, `total_hits_mania`, `country`, `show_country`, `level_std`, `level_taiko`, `level_ctb`, `level_mania`, `avg_accuracy_std`, `avg_accuracy_taiko`, `avg_accuracy_ctb`, `avg_accuracy_mania`, `pp_std`, `pp_taiko`, `pp_ctb`, `pp_mania`, `badges_shown`, `safe_title`, `userpage_content`, `play_style`, `favourite_mode`) VALUES ('999', 'FokaBot', '', 'black', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'XX', '1', '0', '0', '0', '0', '0.000000000000', '0.000000000000', '0.000000000000', '0.000000000000', '0', '0', '0', '0', '3,4,11,0,0,0', '0', '', 0, 0);
+INSERT INTO `users_stats`(`username`, `username_aka`, `user_color`, `user_style`, `ranked_score_std`, `playcount_std`, `total_score_std`, `replays_watched_std`, `ranked_score_taiko`, `playcount_taiko`, `total_score_taiko`, `replays_watched_taiko`, `ranked_score_ctb`, `playcount_ctb`, `total_score_ctb`, `replays_watched_ctb`, `ranked_score_mania`, `playcount_mania`, `total_score_mania`, `replays_watched_mania`, `total_hits_std`, `total_hits_taiko`, `total_hits_ctb`, `total_hits_mania`, `country`, `show_country`, `level_std`, `level_taiko`, `level_ctb`, `level_mania`, `avg_accuracy_std`, `avg_accuracy_taiko`, `avg_accuracy_ctb`, `avg_accuracy_mania`, `pp_std`, `pp_taiko`, `pp_ctb`, `pp_mania`, `badges_shown`, `safe_title`, `userpage_content`, `play_style`, `favourite_mode`) VALUES ('FokaBot', '', 'black', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'XX', '1', '0', '0', '0', '0', '0.000000000000', '0.000000000000', '0.000000000000', '0.000000000000', '0', '0', '0', '0', '3,4,11,0,0,0', '0', '', 0, 0);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
