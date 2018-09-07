@@ -8,6 +8,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
+CREATE DATABASE IF NOT EXISTS `ripple` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `ripple`;
 
 CREATE TABLE IF NOT EXISTS `2fa` (
   `userid` int(11) NOT NULL,
@@ -43,6 +46,11 @@ CREATE TABLE IF NOT EXISTS `badges` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
+(1, 'Beta tester 1.5', 'fa-gift'),
+(2, 'None', '');
+
+
 CREATE TABLE IF NOT EXISTS `bancho_channels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
@@ -54,6 +62,15 @@ CREATE TABLE IF NOT EXISTS `bancho_channels` (
   `hidden` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `bancho_channels` (`id`, `name`, `description`, `public_read`, `public_write`, `status`, `temp`, `hidden`) VALUES
+(1, '#osu', 'Main Ripple channel', 1, 1, 1, 0, 0),
+(2, '#announce', 'Announce channel', 1, 0, 1, 0, 0),
+(3, '#admin', 'Admin only channel', 0, 0, 1, 0, 0),
+(4, '#italian', 'Italian community channel', 1, 1, 1, 0, 0),
+(5, '#english', 'English speaking channel', 1, 1, 1, 0, 0);
+
 
 CREATE TABLE IF NOT EXISTS `bancho_messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -82,6 +99,17 @@ CREATE TABLE IF NOT EXISTS `bancho_settings` (
   `value_string` varchar(512) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO `bancho_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
+(1, 'bancho_maintenance', 0, ''),
+(2, 'free_direct', 1, ''),
+(3, 'menu_icon', 0, 'https://i.imgur.com/L61sxgX.png|http://emily.steffen.sexy'),
+(4, 'login_messages', 0, ''),
+(5, 'restricted_joke', 0, ''),
+(6, 'login_notification', 0, 'Welcome to pep.py'),
+(7, 'osu_versions', 0, ''),
+(8, 'osu_md5s', 0, '');
+
 
 CREATE TABLE IF NOT EXISTS `bancho_tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -141,6 +169,9 @@ CREATE TABLE IF NOT EXISTS `beta_keys` (
   `public` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO `beta_keys` (`id`, `key_md5`, `description`, `allowed`, `public`) VALUES
+(1, '110fe4a3830966be01d0b513fcdb4f66', 'betakey', 1, 1);
 
 CREATE TABLE IF NOT EXISTS `cakes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -281,6 +312,18 @@ CREATE TABLE IF NOT EXISTS `privileges_groups` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
+(1, 'Banned', 0, ''),
+(2, 'BAT', 267, ''),
+(3, 'Chat Moderators', 2883911, ''),
+(4, 'Community Manager ', 978427, ''),
+(5, 'Developer', 1043995, ''),
+(6, 'Donor', 7, ''),
+(7, 'God', 1048575, 'primary'),
+(8, 'Normal User', 3, ''),
+(9, 'Pending', 1048576, ''),
+(10, 'Restricted', 2, '');
 
 CREATE TABLE IF NOT EXISTS `profile_backgrounds` (
   `uid` int(11) NOT NULL,
@@ -456,6 +499,14 @@ CREATE TABLE IF NOT EXISTS `user_badges` (
   `badge` int(11) NOT NULL,
   PRIMARY KEY (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE UNIQUE INDEX `user_badge` ON `user_badges` (user, badge);
+
+
+INSERT INTO `users`(`id`, `username`, `username_safe`, `password_md5`, `salt`, `email`, `register_datetime`, `rank`, `allowed`, `latest_activity`, `silence_end`, `silence_reason`, `password_version`, `privileges`, `flags`) VALUES ('999', 'FokaBot', 'fokabot', '', '', 'fo@kab.ot', '1452544880', '4', '1', '0', '0', '', 1, 978427, 0);
+
+INSERT INTO `users_stats`(`id`, `username`, `username_aka`, `user_color`, `user_style`, `ranked_score_std`, `playcount_std`, `total_score_std`, `replays_watched_std`, `ranked_score_taiko`, `playcount_taiko`, `total_score_taiko`, `replays_watched_taiko`, `ranked_score_ctb`, `playcount_ctb`, `total_score_ctb`, `replays_watched_ctb`, `ranked_score_mania`, `playcount_mania`, `total_score_mania`, `replays_watched_mania`, `total_hits_std`, `total_hits_taiko`, `total_hits_ctb`, `total_hits_mania`, `country`, `show_country`, `level_std`, `level_taiko`, `level_ctb`, `level_mania`, `avg_accuracy_std`, `avg_accuracy_taiko`, `avg_accuracy_ctb`, `avg_accuracy_mania`, `pp_std`, `pp_taiko`, `pp_ctb`, `pp_mania`, `badges_shown`, `safe_title`, `userpage_content`, `play_style`, `favourite_mode`) VALUES ('999', 'FokaBot', '', 'black', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'XX', '1', '0', '0', '0', '0', '0.000000000000', '0.000000000000', '0.000000000000', '0.000000000000', '0', '0', '0', '0', '3,4,11,0,0,0', '0', '', 0, 0);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
