@@ -28,7 +28,7 @@ services:
   hanayo:
     image: hanayo
     build:
-      context: 'https://gitlab.com/ripple-docker/hanayo.git#Dockerfile'
+      context: 'https://gitlab.com/ripple-docker/hanayo.git'
     volumes:
       - ./hanayo.conf:/hanayo/hanayo.conf
       - ./avatars/:/avatars
