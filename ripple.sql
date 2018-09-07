@@ -395,6 +395,8 @@ CREATE TABLE IF NOT EXISTS `system_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO `system_settings` (`id`, `name`, `value_int`, `value_string`) VALUES (NULL, 'registrations_enabled', '1', 'True');
+
 CREATE TABLE IF NOT EXISTS `tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(31) NOT NULL,
