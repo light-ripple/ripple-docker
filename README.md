@@ -1,6 +1,6 @@
 # Ripple Docker Setup Guide!
 
-Big thanks to Emily/Sunpy for helping with lost of things!
+Big thanks to Emily/Sunpy for helping with lots of things!
 
 Only edit options besides the ones mentioned here if you know what you're doing. The steps described should be sufficient to get a functioning instance of ripple up and running
 
