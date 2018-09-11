@@ -506,8 +506,14 @@ CREATE TABLE IF NOT EXISTS `user_badges` (
   UNIQUE INDEX (`user`, `badge`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE UNIQUE INDEX `user_badge` ON `user_badges` (user, badge);
-
+CREATE TABLE IF NOT EXISTS `rap_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
+  `text` varchar(512) NOT NULL,
+  `datetime` int(11) NOT NULL,
+  `through` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `users`(`username`, `username_safe`, `password_md5`, `salt`, `email`, `register_datetime`, `rank`, `allowed`, `latest_activity`, `silence_end`, `silence_reason`, `password_version`, `privileges`, `flags`) VALUES ('FokaBot', 'fokabot', '', '', 'fo@kab.ot', '1452544880', '4', '1', '0', '0', '', 1, 978427, 0);
 
