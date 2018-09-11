@@ -503,7 +503,7 @@ ALTER TABLE `users_stats` AUTO_INCREMENT=999;
 CREATE TABLE IF NOT EXISTS `user_badges` (
   `user` int(11) NOT NULL,
   `badge` int(11) NOT NULL,
-  PRIMARY KEY (`user`)
+  UNIQUE INDEX (`user`, `badge`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE UNIQUE INDEX `user_badge` ON `user_badges` (user, badge);
