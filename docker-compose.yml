@@ -1,127 +1,106 @@
 version: '3.5'
-services:
-  peppy:
-#    container_name: pep.py
-    image: pep.py
-    build:
-      context: 'https://gitlab.com/ripple-docker/pep.py.git'
+services: 
+  web:
+    image: nginx
     volumes:
-      - ./peppy.ini:/pep.py/config.ini
+      - ./Ripple-NGINX/:/etc/nginx/conf.d/
+      - ./Certificates/:/src/certificates/
+    links:  
+      - lets
+      - pep.py
+      - hanayo
+      - rippleapi
     depends_on:
-      - redis
-      - db
-#    healthcheck:
-    restart: on-failure
-
-  lets:
-    image: let.s
-    build:
-      context: 'https://gitlab.com/ripple-docker/lets.git'
-    volumes:
-      - ./lets.ini:/let.s/config.ini
-      - ./lets_data:/let.s/.data
-    depends_on:
-      - redis
-      - db
+      - lets
+      - pep.py
+      - hanayo
+      - rippleapi
+    ports: 
+      - 80:80
+      - 443:443
     restart: on-failure
 
   hanayo:
     image: hanayo
-    build:
-      context: 'https://gitlab.com/ripple-docker/hanayo.git'
+    build: ./Ripple-Hanayo
     volumes:
-      - ./hanayo.conf:/hanayo/hanayo.conf
-      - ./avatars/:/avatars
-    depends_on:
-      - redis
+      - ./data/hanayo/:/ripple
+      - ./data/avatars/:/avatars
+    links: 
       - db
+      - redis
+      - rippleapi
+    depends_on:
+      - db
+      - redis
       - rippleapi
     restart: on-failure
 
   rippleapi:
     image: rippleapi
-    build:
-      context: 'https://gitlab.com/ripple-docker/ripple-api.git#Dockerfile'
+    build: ./Ripple-API
     volumes:
-      - ./rippleapi.conf:/rippleapi/api.conf
-    depends_on:
-      - redis
+      - ./data/rippleapi/:/ripple/
+    links: 
       - db
+      - redis
+    depends_on:
+      - db
+      - redis
     restart: on-failure
 
-  avatar_server:
-    image: avatar_server
-    build:
-      context: 'https://gitlab.com/ripple-docker/avatar-server-go.git#Dockerfile'
+  pep.py:
+    image: pep.py
+    build: ./Ripple-PEP.PY
     volumes:
-      - ./avatars/:/avatar_server/avatars
+      - ./data/pep.py/:/ripple
+    links: 
+      - db
+      - redis
+    depends_on:
+      - db
+      - redis
+    restart: on-failure
+    ports:
+      - "6667:6667"
+
+  lets:
+    image: lets
+    build: ./Ripple-LETS
+    volumes:
+      - ./data/lets/:/ripple
+      - ./data/lets/common:/ripple-src/common
+    links: 
+      - db
+      - redis
+    depends_on:
+      - db
+      - redis
     restart: on-failure
 
+
+  # Datacore
   redis:
     image: redis
     volumes:
-      - redis_vol:/data
+      - ripple_redis_vol:/data
     restart: on-failure
+    expose:
+      - 6379
 
   db:
-    container_name: mysql
+    container_name: db
     image: mysql:5.7.23
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - db_data:/var/lib/mysql
+      - ripple_mysql_data:/var/lib/mysql
       - ./ripple.sql:/docker-entrypoint-initdb.d/ripple.sql
-
     restart: on-failure
     environment:
       - MYSQL_ROOT_PASSWORD=pass
-
-  web:
-    image: nginx
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./keys/:/keys/
-      - ./old-frontend/:/code
-    depends_on:
-      - hanayo
-      - lets
-      - peppy
-      - old_frontend
-      - avatar_server
-    ports:
-      - 80:80
-      - 443:443
-    restart: on-failure
-
-  old_frontend:
-    image: php:fpm
-    command: sh -c "docker-php-ext-install pdo pdo_mysql && php-fpm"
-    volumes:
-      - ./old-frontend/:/code
-      - ./oldfrontend.config.php:/code/inc/config.php
-    depends_on:
-      - rippleapi
-    restart: on-failure
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: on-failure
-    depends_on:
-      - db
-    ports:
-      - 8056:80
-    volumes:
-      - /sessions
-
-  portainer:
-    container_name: portainer
-    image: portainer/portainer
-    ports:
-      - 9000:9000
-    volumes:
-      - ./portainer:/data
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: "no"
+    expose:
+      - 3306
 
 volumes:
-  db_data:
-  redis_vol:
+  ripple_mysql_data:
+  ripple_redis_vol:
